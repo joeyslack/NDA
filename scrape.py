@@ -63,7 +63,7 @@ for idx, l in enumerate(list):
 
   # 2b. Logged in - load path and dump source
   try: 
-    driver.get(url=l.replace('[COMPANY_NAME]', target_name[idx]))    
+    driver.get(url=l.replace('[COMPANY_NAME]', target_site_names[idx]))    
     driver.save_screenshot(os.path.abspath(path) + m.group(1) + '.png')
   except WebDriverException as e:
     print(e)
