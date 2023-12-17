@@ -70,3 +70,10 @@ IMPORTANT: Our `undetected-chromedriver` WebDriver cannot access the same `Chrom
 
 - Google's (Vertext) Document AI is very interesting <https://cloud.google.com/document-ai#demo>. This will solve for Parsing, OCR and extraction from physical/scanned documents and otherwise. Some of this is overkill for needs here <https://cloud.google.com/vertex-ai>, since we don't need to do full, manual classifications, some of the provided text/document models seem to work very well. This *should* get us a decent output product.
 - Visual Presentation adapter? We could generate additional presentation layers with a tool such as this <https://www.visme.co/>. This is probably overkill, but we could use the same data pool (db stored AI result) to generate visual presentations. If nothing else, I like the idea of using their charts/graphcs. Would be really nice to be able to do really simple charts/graphs, and insert them into the document. Generate pitchdeck/slides, as a secondary step, to be shared with others, w/ attached PDF report?
+
+## Report Model Discussion
+
+- And then I want it to generate: company overview, product overview, competitors, mgmt team bios (from Linkedin), fundraising history, questions for mgmt 
+Mgmt team bios are typically in the form of like Name Role: previous roles of note (especially if they have sold previous companies or worked at other companies in related spaces), educational background + CEO, founders, etc
+- Fundraising history should be in the form “company has raised a total of $XXX. Last round was a $XX round led by YY at a $ZZ post money valuation in MM-YY. Summary of the previous rounds ($xx, led by, valuation, date), and other key investors include aa, bb, cc
+- It’s typically: revenue / scale / growth, key use cases, types of customers, customer breakdown by industry / concentration, GTM sales motion, sales efficiency, net dollar retention / gross dollar retention / churn, margin profile, bridge to breakeven, path to steady-stage ebitda margins, key items in their product roadmap moving forward, biggest levers for growth, capital needs / valuation expectations,  current burn, gaps in management team
