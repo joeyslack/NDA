@@ -80,9 +80,9 @@ for idx, l in enumerate(list):
   # Find all images. Maybe save them somewhere?
   imgs = driver.find_elements(By.TAG_NAME, 'img')
   for item in imgs:
-    # print(imgs)
-    if item is not None and item.attrs.get('src') is not None:
-      print(item.attrs.get('src'))
+    print(imgs)
+    if item is not None and item.get_attribute('src') is not None:
+      print(item.get_attribute('src'))
   # for item in image_search_body.children("img", recursive=True):
   #   if item is not None and item.attrs.attrs is not None:
   #     print(item.attrs.get("src", item.attrs.get("data-src")), "\n\n")
