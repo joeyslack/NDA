@@ -71,12 +71,14 @@ for idx, l in enumerate(list):
 
   # For now just take all the source, and parse later
   s = driver.page_source
-  #TODO: Add modeled data here, taken from targets (ie: driver.find_element(By.XPATH, '//input[@name="q"]'))
+
   # See: https://github.com/ultrafunkamsterdam/undetected-chromedriver/blob/master/example/example.py for target examples
   f = open('./output/' + target_name + '/'  + m.group(1) + "-" + dt.datetime.utcnow().strftime("%s") + '.txt', "w+")
   f.write(s)
   f.close()
 
+  #TODO: Add modeled data here, taken from targets (ie: driver.find_element(By.XPATH, '//input[@name="q"]'))
+  
   # Find all images. Maybe save them somewhere?
   imgs = driver.find_elements(By.TAG_NAME, 'img')
   for item in imgs:
