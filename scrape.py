@@ -9,8 +9,9 @@ import selenium.webdriver.support.expected_conditions as EC  # noqa
 import pickle
 import json
 import re
-from list import list # list.py
-import models.report as report_model
+from list import list, selectors # list.py
+# import models.report as report_model
+from models import report as report_model
 from selenium import webdriver
 import getpass
 
@@ -20,13 +21,13 @@ path = f'/Users/{getpass.getuser()}/Library/Application Support/Google/Chrome/ND
 options = uc.ChromeOptions()
 driver = uc.Chrome(headless=False, use_subprocess=True, user_data_dir=path)
 
-target_name = input("What is the TARGET NAME? ")
+target_name = input("What is the COMPANY NAME? ")
 
 if not target_name:
-  print('You must enter a TARGET NAME. Aborting.')
+  print('You must enter a COMPANY NAME. Aborting.')
   exit()
 
-target_site_names = [input(f'COMPANY NAME for {l}? ') or target_name for l in list]
+target_site_names = [input(f'Override COMPANY NAME? for {re.search("https?://([A-Za-z_0-9.-]+).*", l)[1]}? ') or target_name for l in list]
 # result_t = [k for k in range(1,6)]
 # print('Start scraping:', list)
 
@@ -63,8 +64,21 @@ for idx, l in enumerate(list):
 
   # 2b. Logged in - load path and dump source
   try: 
+    # Open target
     driver.get(url=l.replace('[COMPANY_NAME]', target_site_names[idx]))    
+    
+    # Save screenshot (can be parsed later by OCR if we wish, nice to keep)
     driver.save_screenshot(os.path.abspath(path) + m.group(1) + '.png')
+
+    # Get selectors for each source, and grab the data
+    if idx is 0: # Only run on first?
+      report_model.data['company']['description'] = driver.find_elements(By.TAG_NAME, report_model.data['company']['description'])[1].text
+    
+    if idx is 2:
+      report_model.data['product']['description'] = driver.find_elements(By.TAG_NAME, 'profile-section').text
+
+    # profile-section
+    
   except WebDriverException as e:
     print(e)
     continue
@@ -80,8 +94,12 @@ for idx, l in enumerate(list):
 
   #TODO: Add modeled data here, taken from targets (ie: driver.find_element(By.XPATH, '//input[@name="q"]'))
   
-  # Find all images. Maybe save them somewhere?
+  # Find all images (currently for no particular reason). Maybe save them somewhere?
   imgs = driver.find_elements(By.TAG_NAME, 'img')
   for item in imgs:
     if item.get_attribute('src') is not None:
       print(item.get_attribute('src'))
+
+
+print('Data Model: \n', report_model.data)
+input('Press [Enter] to finish')

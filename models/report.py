@@ -34,8 +34,8 @@ model = {
 }
 
 data = {
-  company: company,
-  product: product,
-  finance: finance,
-  insights: insights,
+  'company': company,
+  'product': product,
+  'finance': finance,
+  'insights': insights,
 }

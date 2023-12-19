@@ -2,6 +2,7 @@ import time
 import getpass
 from selenium import webdriver
 import undetected_chromedriver as uc
+from urllib.parse import urlparse
 
 # NOTE: Will create a `NDA_Profile` user in Chrome. 
 # For simplicity, just log into all of the services using this new profile, trust me it's easier than any alternative currently.
@@ -20,9 +21,11 @@ driver = uc.Chrome(headless=False, use_subprocess=True, user_data_dir=path) # Fo
 print('~ Authenticating on each source... Ensure you are _LOGGED IN_ on each platform ~')
 
 from list import list # list.py
-for l in list:
+for idx, l in enumerate(list):
+  # Check only once per original domain
+  if idx > 0 and urlparse(list[idx-1]).hostname == urlparse(l).hostname: # Skip if domain is same as last (check once per site)
+    break
   driver.get(url=l.replace('[COMPANY_NAME]', 'microsoft'))
-  # driver.get(l.replace('[COMPANY_NAME]', 'microsoft'))
   time.sleep(1)
   input ("Verify login status in browser. Authenticate if necessary now... [Press ENTER to continue]")
   time.sleep(1)
