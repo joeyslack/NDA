@@ -1,6 +1,6 @@
 import json
 
-# A data model to be used for report generation. 
+# Data Models to be used for report generation. Each keyed entry should be appended array.
 # The more strongly typed this is the better. Modify as needed.
 
 company = {
@@ -11,7 +11,7 @@ company = {
 }
 
 product = {
-  "desciption": [],
+  "description": [],
 }
 
 finance = {
@@ -33,9 +33,16 @@ model = {
   'misc': {}
 }
 
+# Some kind of raw dump catchall to throw unstructured data
+raw = {
+  'data': []
+}
+
+# Container
 data = {
   'company': company,
   'product': product,
   'finance': finance,
   'insights': insights,
+  'raw': raw,
 }
