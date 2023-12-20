@@ -131,5 +131,10 @@ for idx, l in enumerate(sources):
   f.write(json.dumps(report_model.data))
   f.close()
 
+  # Write raw page source
+  f = open('./output/' + target_name + '/'  + l + '.html', "w+")
+  f.write(s)
+  f.close()
+
 print('Data Model: \n', report_model.data)
 input('Press [Enter] to finish')

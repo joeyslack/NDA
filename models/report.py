@@ -12,6 +12,7 @@ company = {
 
 product = {
   "description": [],
+  "technology": [],
 }
 
 finance = {
@@ -21,6 +22,7 @@ finance = {
 
 insights = {
   "opportunities": [],
+  "news": [],
   "concerns": [],
   "questions": [], # {"question": "Text", "answers": []}
 }

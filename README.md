@@ -20,13 +20,20 @@ NDA's general concept is to:
 
 ## Getting Started
 
+### Scraping
+
 1. `pip install -r requirements`
 2. `python auth.py`. Login to all sources where appropriate. Pay attention to the authentication status of each source as prompted.
 3. `python scrape.py`. Generates output to `./output`.
 4. TODO: Process results with AI and generate summaries.
 5. TODO: Generate a report based on sample template(s).
 
-- Output Data is sent to the `./output` folder, on a per-user and per-source basis.
+Note: Output Data is sent to the `./output` folder, on a per-user and per-source basis.
+
+### Processing & Generattion
+
+- `python process.py <path_to_pdf>` for `Document AI` processing.
+- TODO: `python generate.py <input_path>` for Report generation.
 
 TODO: DB Layer for cached data? We can always generate new reports with AI tool, based on stored/raw data (unless deleted). However, to avoid needless db hits, we could have a db/cache layer here. PG data (`jsonb`) or `mongodb` would work for sub-value filtering. Alternatively, a `redis` layer could save us a lot of hassle with pricing/free limits during dev, as target specific collection efforts may be persisted between scraping events.
 
@@ -40,7 +47,7 @@ For now, data is dumped into local `.json`/`.txt` documents for simpler use, fou
 
 Collected data should then be sent for processing (OpenAI?) llm, ensuring the correct insights are summarized from the collected data. The processed data should be conformed into a template specification, either using template variable injection, or having OpenAI generate the report automatically based on a sample template.
 
-Note: It would be ideal to provide a real `output.pdf` sample in this project source to be used as a reference. Also see `./models/samples`
+NOTE: It would be ideal to provide a real `output.pdf` sample in this project source to be used as a reference. Also see `./models/samples`.
 
 ## Issues
 

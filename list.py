@@ -19,8 +19,10 @@ from models import report as report_model
 sources = [
   "https://www.crunchbase.com/organization/[COMPANY_NAME]",
   "https://www.crunchbase.com/organization/[COMPANY_NAME]/company_financials",
-  # "https://www.crunchbase.com/organization/[COMPANY_NAME]/technology",
-  # "https://www.crunchbase.com/organization/[COMPANY_NAME]/signals_and_news",
+  "https://www.crunchbase.com/organization/[COMPANY_NAME]/people",
+  "https://www.crunchbase.com/organization/[COMPANY_NAME]/technology",
+  "https://www.crunchbase.com/organization/[COMPANY_NAME]/signals_and_news",
+  "https://www.crunchbase.com/organization/[COMPANY_NAME]/org_similiarity_overview",
   # "https://www.linkedin.com",
   # "https://www.pitchbook.com", # https://my.pitchbook.com/loginAction.do?action=login
   # "https://www.owler.com",
@@ -42,23 +44,42 @@ selectors = [
     { 'category': 'product', 'field': 'description', 'element': "driver.find_elements(By.TAG_NAME, 'description-card')[1].text" },
     
     # Competitors
-    { 'category': 'company', 'field': 'competitors', 'element': "driver.find_elements(By.TAG_NAME, 'description-card')[1].text" },
+    # { 'category': 'company', 'field': 'competitors', 'element': "driver.find_elements(By.TAG_NAME, 'description-card')[1].text" },
     
     # Fundraising (History & Valuation)
 
     # Opportunities
 
     # Concerns
+    # Not sure?
 
     # Founder Background
 
     # Key Questions
+    # This one isn't perfect, but close enough
+    { 'category': 'insights', 'field': 'questions', 'element': "driver.find_elements(By.TAG_NAME, 'phrase-list-card')" },
 
     # Misc?
     # ? News
     { 'category': 'raw', 'field': 'data', 'element': "driver.find_elements(By.TAG_NAME, 'profile-section')" },
-
   ], # Selectors for list[0] (ie: "https://www.crunchbase.com/organization/[COMPANY_NAME]")
+  [
+    # Fundraising (History & Valuation)
+    { 'category': 'finance', 'field': 'history', 'element': "driver.find_elements(By.TAG_NAME, 'phrase-list-card')" },
+    # { 'category': 'finance', 'field': 'valuation', 'element': "driver.find_elements(By.TAG_NAME, 'description-card')[1].text" },
+  ], # Selectors for list[1] (financials)
+  [
+    { 'category': 'company', 'field': 'staff', 'element': "driver.find_elements(By.TAG_NAME, 'phrase-list-card')" },
+  ], # Selectors for list[2] (people)
+  [
+    { 'category': 'product', 'field': 'technology', 'element': "driver.find_elements(By.TAG_NAME, 'phrase-list-card')" },
+  ], # Selectors for list[3] (technology)
+  [
+    { 'category': 'company', 'field': 'news', 'element': "driver.find_elements(By.TAG_NAME, 'inline-timeline-card')" },
+  ], # Selectors for list[4]] (news)
+  [
+    { 'category': 'company', 'field': 'competitors', 'element': "driver.find_elements(By.TAG_NAME, 'org-similarity-card-item')" },
+  ], # Selectors for list[5] (competitors)
 ]
 
 # def fe():
