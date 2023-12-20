@@ -132,7 +132,8 @@ for idx, l in enumerate(sources):
   f.close()
 
   # Write raw page source
-  f = open('./output/' + target_name + '/'  + l + '.html', "w+")
+  # os.mkdir('./output/' + target_name)
+  f = open('./output/' + target_name + '/'  + l.lstrip('https://www.').replace('/', '_') + '.html', "w+")
   f.write(s)
   f.close()
 
