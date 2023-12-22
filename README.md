@@ -32,6 +32,7 @@ Note: Output Data is sent to the `./output` folder, on a per-user and per-source
 
 ### Processing & Generattion
 
+- `python report.py <path_to_json_in_outputdir>` for Dynamic Report Generation
 - `python process.py <path_to_pdf>` for `Document AI` processing.
 - TODO: `python generate.py <input_path>` for Report generation.
 
