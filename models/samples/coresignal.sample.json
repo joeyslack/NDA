@@ -1,0 +1,190 @@
+{
+    "id": 111371,
+    "url": "https://www.professional-network.com/company/luxury-store-brand",
+    "hash": "83627f1b6ccb868ce2450d63124a1562",
+    "name": "Luxury store brand",
+    "website": "http://www.luxury-store-brand.com",
+    "size": "1,001-5,000 employees",
+    "industry": "Retail Apparel and Fashion",
+    "description": "Luxury store brand is the go-to destination for chic, contemporary fashion. The brand evokes a mindset - an attitude, not an age. It's a true original, always defining fashion's next stride forward. Designed for the confident, sexy, modern woman, Luxury store brand is a global label that embodies a sensual, sophisticated lifestyle.\n\nChairman and Founder John Doe opened the first Luxury store brand boutique in 1980 in San Francisco. Recognizing a demographic that was neither junior nor bridge, Manny created the first contemporary fashion brand. Over 35 years later, Luxury store brand has established itself as one of the world's top fashion retailers.\n\nLuxury store brand STORES\n\nWithin its stores and on luxurystorebrand.com, Luxury store brand seeks to create an upscale, visually stimulating boutique environment while providing top-notch service to ensure an exceptional shopping experience. Stylists are knowledgeable, passionate about fashion and skilled at addressing clients' styling needs. Luxury store brand also offers a line of merchandise branded with the distinctive Luxury store brand logo for those who love to wear the Luxury store brand name.\n\nLuxury store brand markets its merchandise under the Luxury store brand and Luxury store brand outlet names through more than 200 retail stores, more than 100 international-licensee operated stores and luxury-store-brand.com. \n\nluxury-store-brand.com\nLaunched in 1998, luxury-store-brand.com continues the Luxury store brand store experience and provides a complete assortment of Luxury store brand merchandise to clients in the United States and internationally.",
+    "followers": 23288,
+    "founded": 1976,
+    "headquarters_city": null,
+    "headquarters_country": null,
+    "headquarters_state": null,
+    "headquarters_street1": null,
+    "headquarters_street2": null,
+    "headquarters_zip": null,
+    "created": "2016-06-17 20:08:21",
+    "last_updated": "2023-09-09 18:08:29",
+    "last_response_code": 200,
+    "type": "Public Company",
+    "headquarters_new_address": "Los Angeles, California",
+    "employees_count": 1246,
+    "headquarters_country_restored": "United States",
+    "headquarters_country_parsed": "United States",
+    "company_shorthand_name": "luxury-store-brand",
+    "company_shorthand_name_hash": "44584e20693d123abce7729e4a2b9acb",
+    "canonical_url": "https://www.professional-network.com/company/luxury-store-brand",
+    "canonical_hash": "83627f1b6ccb868ce2450d63124a1562",
+    "canonical_shorthand_name": "luxury-store-brand",
+    "canonical_shorthand_name_hash": "44584e20693d123abce7729e4a2b9acb",
+    "deleted": 0,
+    "last_updated_ux": 1694282909,
+    "source_id": 16753,
+    "company_affiliated_collection": [
+        {
+            "id": 735765,
+            "company_id": 7410562,
+            "affiliated_company_url": "https://www.professional-network.com/company/rental-company",
+            "affiliated_company_id": 7125453,
+            "created": "2020-02-04 08:32:23",
+            "last_updated": "2022-09-21 08:16:07",
+            "deleted": 1
+        }
+    ],
+    "company_also_viewed_collection": [
+        {
+            "id": 448146,
+            "company_id": 111371,
+            "viewed_company_url": "https://www.professional-network.com/company/fashion-brand",
+            "viewed_company_id": null,
+            "created": "2016-06-17 20:08:21",
+            "last_updated": "2019-11-14 01:07:39",
+            "deleted": 1
+        }
+    ],
+    "company_crunchbase_info_collection": [
+        {
+            "id": 193172,
+            "company_id": 111371,
+            "cb_url": "https://www.crunchbase.com/organization/luxury-store-brand",
+            "created": "2022-09-04 08:48:22",
+            "last_updated": "2022-10-01 11:52:42",
+            "deleted": 1
+        },
+        {
+            "id": 258123,
+            "company_id": 111371,
+            "cb_url": "https://www.crunchbase.com/organization/luxury-store-brand",
+            "created": "2023-02-06 14:06:55",
+            "last_updated": "2023-09-09 18:08:29",
+            "deleted": 0
+        }
+    ],
+    "company_featured_employees_collection": [
+        {
+            "id": 26392978,
+            "company_id": 111371,
+            "url": "https://www.professional-network.com/john-doe",
+            "created": "2019-11-14 01:07:39",
+            "last_updated": "2020-02-22 12:17:32",
+            "deleted": 1
+        }
+    ],
+    "company_featured_investors_collection": [
+        {
+            "id": 812666,
+            "company_id": 111371,
+            "investor_id": 5311,
+            "round_id": 1822807,
+            "created": "2021-11-29 16:02:04",
+            "last_updated": "2021-12-28 09:06:11",
+            "deleted": 1,
+            "company_investors_list": {
+                "id": 5311,
+                "name": "The Investor Company",
+                "hash": "7b1fcd743ad2e20a8f72819749131678",
+                "cb_url": "https://www.crunchbase.com/organization/the-investor-company",
+                "created": "2020-09-10 00:02:42",
+                "last_updated": "2022-02-07 10:32:06"
+            }
+        }
+    ],
+    "company_funding_rounds_collection": [
+        {
+            "id": 2,
+            "last_round_investors_count": 0,
+            "total_rounds_count": 4,
+            "last_round_type": "Seed",
+            "last_round_date": "2016-06-01 00:00:00",
+            "last_round_money_raised": "US$ 224.2K",
+            "cb_url": "https://www.crunchbase.com/funding_round/software-company-seed--92e35c7f",
+            "created": "2020-09-07 13:01:57",
+            "last_updated": "2020-09-26 16:29:54",
+            "deleted": 1
+        }
+    ],
+    "company_locations_collection": [
+        {
+            "id": 11612582,
+            "company_id": 111371,
+            "location_address": "Los Angeles, California, US",
+            "is_primary": 1,
+            "created": "2019-11-14 01:07:39",
+            "last_updated": "2023-09-09 18:08:29",
+            "deleted": 0
+        },
+        {
+            "id": 11612583,
+            "company_id": 111371,
+            "location_address": "New York, US",
+            "is_primary": 0,
+            "created": "2019-11-14 01:07:39",
+            "last_updated": "2023-09-09 18:08:29",
+            "deleted": 0
+        }
+    ],
+    "company_similar_collection": [
+        {
+            "id": 45310284,
+            "company_id": 111371,
+            "url": "https://www.professional-network.com/company/luxury-clothing-brand",
+            "created": "2019-11-14 01:07:39",
+            "last_updated": "2021-06-22 02:08:26",
+            "deleted": 0
+        }
+    ],
+    "company_specialties_collection": [
+        {
+            "id": 160305,
+            "company_id": 111371,
+            "specialty": "Luxury store brand stores",
+            "created": "2016-06-17 20:08:21",
+            "last_updated": "2022-07-25 04:42:17",
+            "deleted": 1
+        }
+    ],
+    "company_stock_info_collection": [
+        {
+            "id": 2789,
+            "company_id": 111371,
+            "ticker": "LSB",
+            "exchange": "OTCM",
+            "created": "2020-05-07 14:38:14",
+            "last_updated": "2020-07-19 09:39:38",
+            "deleted": 1
+        }
+    ],
+    "company_updates_collection": [
+      {
+        "id": 193,
+        "company_id": 12695930,
+        "urn": "urn:li:activity:6991335602751201281",
+        "followers": 1371,
+        "date": "1mo",
+        "description": "We are delighted to share with you our success at the Expo 2022. Prime Minister spent the highest time in the expo at our Virtual Reality Aircraft Simulator, took an entire sortie on the virtual ALH MK III, experienced it to the fullest. \n\nKudos to the entire team of the Tech Company for this remarkable achievement ! Hands down by far the best show we've ever had !",
+        "reactions_count": 22,
+        "comments_count": 2,
+        "reshared_post_author": "John Doe",
+        "reshared_post_author_url": "https://www.professional-network.com/john-doe",
+        "reshared_post_author_headline": "Co-Founder at Tech Company, VR/AR Training Facilitator, TEDx & Keynote Speaker",
+        "reshared_post_description": "We are delighted to share with you our success at the Expo 2022. Prime Minister spent the highest time in the expo at our Virtual Reality Aircraft Simulator, took an entire sortie on the virtual ALH MK III, experienced it to the fullest. \n\nKudos to the entire team of the Tech Company for this remarkable achievement ! Hands down by far the best show we've ever had !",
+        "reactions_count": 22,
+        "reshared_post_followers": 30,
+        "reshared_post_date": "1mo",
+        "last_updated": "2023-01-04 10:09:34",
+        "deleted": 1
+      }
+    ]
+}

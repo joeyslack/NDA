@@ -1,17 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>NDA Generated Report</h1>
 
-<p>Description: {{ data['compahy']['description'] }} </p>
-<p>Product: {{ data['product']['description'] }}</p>
-<p>Competitors: {{ data['company']['competitors'] </p>
-
-<p>Fundraising: {{ data['company']['competitors'] </p>
-<p>Opportunities: {{ data['insights']['opportunities'] </p>
-<p>Concerns: {{ data['insights']['concerns'] </p>
-<p>Founders: {{ data['company']['founders'] </p>
-
-<p>Questions: {{ data['insights']['questions'] </p>
-
+<p>Name:</p>
+<p><span class="title">Description:</span> {{ data['company']['description'] }} </p>
+<p><span class="title">Product:</span> {{ data['product']['description'] }}</p>
+<p><span class="title">Technology:</span> {{ data['product']['technology'] }} </p>
+<p><span class="title">Competitors:</span> {{ data['company']['competitors'] }}</p>
+<p><span class="title">Industry:</span> [get_tags_here]</p>
+<p><span class="title">Fundraising:</span> {{ data['company']['competitors'] }}</p>
+<p><span class="title">Opportunities:</span> {{ data['insights']['opportunities'] }}</p>
+<p><span class="title">Concerns:</span> {{ data['insights']['concerns'] }}</p>
+<p><span class="title">Founders:</span> {{ data['company']['founders'] }}</p>
+<p><span class="title">Questions:</span> {{ data['insights']['questions'] }}</p>
 
 {% endblock %}
+
+
+import json
+
+# Data Models to be used for report generation. Each keyed entry should be appended array.
+# The more strongly typed this is the better. Modify as needed.
+
+company = {
+  "name": "",
+  "description": [],
+  "competitors": [],
+  "founders": [],
+  "staff": [],
+}
+
+product = {
+  "description": [],
+  "technology": [],
+}
+
+finance = {
+  "history": [],
+  "valuation": [],
+}
+
+insights = {
+  "opportunities": [],
+  "news": [],
+  "concerns": [],
+  "questions": [], # {"question": "Text", "answers": []}
+}
+
+model = {
+  'company': {},
+  'staff': [],
+  'product': {},
+  'finance': {},
+  'misc': {}
+}
+
+# Some kind of raw dump catchall to throw unstructured data
+raw = {
+  'data': []
+}
+
+# Container
+data = {
+  'company': company,
+  'product': product,
+  'finance': finance,
+  'insights': insights,
+  'raw': raw,
+}
