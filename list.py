@@ -27,6 +27,8 @@ sources = [
   # "https://www.pitchbook.com", # https://my.pitchbook.com/loginAction.do?action=login
   # "https://www.owler.com",
   # "https://tracxn.com/" # Technology + Human-in-the-Loop for Deal Discovery
+  # https://w.tracxn.com/offerings/dd-pack
+  # "https://www.harmonic.ai/" # 
 ]
 
 # TODO: Add selectors for each list item, ie:
