@@ -89,6 +89,12 @@ TLDR: Run `auth.py`, and validation your authentication status by following the 
 - Google's (Vertext) Document AI is interesting <https://cloud.google.com/document-ai#demo>. This will solve for Parsing, OCR and extraction from physical/scanned documents and otherwise. Some of this is overkill for needs here <https://cloud.google.com/vertex-ai>, since we don't need to do full manual classifications. Some of the provided text/document models seem to work very well, particularly `AI Document Summarization`. This *should* get us a decent output product.
 - Visual Presentation adapter? We could generate additional presentation layers with a tool such as this <https://www.visme.co/>. This is probably overkill, but we could use the same data collection to generate visual presentations. It would be nice to be able to do simple charts/graphs, and insert them into the document.
 
+### Inspiration / Research
+
+- <https://www.harmonic.ai/> Startup database. Interesting reports we can likely inspire from. Requires demo access
+- <https://www.peopledatalabs.com/> B2B Data Aggregation. Company data enrichment.
+- <https://coresignal.com/solutions/company-data-api/> Company data via API
+
 ## Report Model Discussion
 
 - And then I want it to generate: company overview, product overview, competitors, mgmt team bios (from Linkedin), fundraising history, questions for mgmt 
