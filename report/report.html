@@ -4,16 +4,16 @@
 <h1>NDA Generated Report</h1>
 
 <p>Name:</p>
-<p><span class="title">Description:</span> {{ data['company']['description'] }} </p>
-<p><span class="title">Product:</span> {{ data['product']['description'] }}</p>
-<p><span class="title">Technology:</span> {{ data['product']['technology'] }} </p>
-<p><span class="title">Competitors:</span> {{ data['company']['competitors'] }}</p>
+<p><span class="title">Description:</span> {{ data['company']['description'].join('\n') }} </p>
+<p><span class="title">Product:</span> {{ data['product']['description'].join('\n')  }}</p>
+<p><span class="title">Technology:</span> {{ data['product']['technology'].join('\n')  }} </p>
+<p><span class="title">Competitors:</span> {{ data['company']['competitors'].join('\n')  }}</p>
 <p><span class="title">Industry:</span> [get_tags_here]</p>
-<p><span class="title">Fundraising:</span> {{ data['company']['competitors'] }}</p>
-<p><span class="title">Opportunities:</span> {{ data['insights']['opportunities'] }}</p>
-<p><span class="title">Concerns:</span> {{ data['insights']['concerns'] }}</p>
-<p><span class="title">Founders:</span> {{ data['company']['founders'] }}</p>
-<p><span class="title">Questions:</span> {{ data['insights']['questions'] }}</p>
+<p><span class="title">Fundraising:</span> {{ data['company']['competitors'].join('\n')  }}</p>
+<p><span class="title">Opportunities:</span> {{ data['insights']['opportunities'].join('\n')  }}</p>
+<p><span class="title">Concerns:</span> {{ data['insights']['concerns'].join('\n')  }}</p>
+<p><span class="title">Founders:</span> {{ data['company']['founders'].join('\n')  }}</p>
+<p><span class="title">Questions:</span> {{ data['insights']['questions'].join('\n')  }}</p>
 
 {% endblock %}
 
