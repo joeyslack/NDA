@@ -3,5 +3,6 @@ cookies/*
 output/*
 __pycache__/*
 __pycache__
-venv
+venv/*
+.envvenv
 .env
