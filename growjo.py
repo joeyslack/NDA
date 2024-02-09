@@ -7,9 +7,9 @@ options = uc.ChromeOptions()
 driver = uc.Chrome(headless=False, use_subprocess=True)
 
 # startRow = 0
-startRow = 3468
+startRow = 3723
 # for i in range(21, 200):
-for i in range(89, 201):
+for i in range(94, 201):
   driver.get(url=f"https://growjo.com/home/{i}")
   df = driver.find_element(By.CSS_SELECTOR, '.jss31.cstm-table')
   # print(df.get_attribute("outerHTML"))
@@ -24,11 +24,6 @@ for i in range(89, 201):
     df2.to_excel(writer, header=False, index=False, startrow=startRow)
   startRow += 51
   print (f"Finished page: {i}, Next is: {i+1}, Next record start @: {startRow}")
-
-  # data = {'EmployeeID': [101, 102, 103],
-  #         'EmployeeName': ['Alice', 'Bob', 'Charlie'],
-  #         'Salary': [60000, 70000, 80000]}
-
 
 # df_new = pd.DataFrame(data)
 
