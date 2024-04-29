@@ -2,6 +2,7 @@
 import time
 import re
 import random
+import sys
 # import pandas as pd
 import undetected_chromedriver as uc
 from selenium.webdriver.remote.webdriver import By
@@ -33,7 +34,10 @@ if __name__ == '__main__':
 conn = connect(config)
 curr = conn.cursor()
 
-curr.execute(f"SELECT id, linkhref FROM paula WHERE linkhref IS NOT NULL ORDER BY id ASC");
+# Use argument for start position
+start = sys.argv[1] if len(sys.argv) > 1 else 0
+print(f"Start at: {start}")
+curr.execute(f"SELECT id, linkhref FROM paula WHERE linkhref IS NOT NULL AND id >= {start} ORDER BY id ASC");
 rows = curr.fetchall()
 
 for id, link in rows:
@@ -44,8 +48,15 @@ for id, link in rows:
   # 3. Get page content
   # html = driver.find_element(By.XPATH, "//div[contains(@class, 'iWReRk')]")
   # IngredientPagestyles__Content-sc-rgh8tc-1 iWReRk
-  text = driver.find_element(By.XPATH, "//div[contains(@class, 'iWReRk')]").text
-  html = driver.find_element(By.XPATH, "//div[contains(@class, 'iWReRk')]").get_attribute("innerHTML")
+  try: 
+    text = driver.find_element(By.XPATH, "//div[contains(@class, 'iWReRk')]").text
+    html = driver.find_element(By.XPATH, "//div[contains(@class, 'iWReRk')]").get_attribute("innerHTML")
+  except:
+    text = driver.find_element(By.XPATH, "//div[contains(@class, 'jPBQaK')]").text
+    html = driver.find_element(By.XPATH, "//div[contains(@class, 'jPBQaK')]").get_attribute("innerHTML")
+  
+  
+  # jPBQaK
   # Escaping
   text = text.replace("'", "\\'")
   html = html.replace("'", "\\'")
