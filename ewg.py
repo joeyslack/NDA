@@ -19,7 +19,7 @@ def connect(config):
   """ Connect to the PostgreSQL database server """
   try:
     # connecting to the PostgreSQL server
-    with psycopg2.connect(host='localhost', user='jslack', dbname='ewg_scrape', port='5432') as conn:
+    with psycopg2.connect(**config) as conn:
       print('Connected to the PostgreSQL server.')
       return conn
   except (psycopg2.DatabaseError, Exception) as error:
@@ -30,8 +30,11 @@ if __name__ == '__main__':
   # connect(config)
 
 # 1. Load page
-category = sys.argv[2] if len(sys.argv) > 2 else "Body"
-page = sys.argv[1] if len(sys.argv) > 1 else 1
+category = sys.argv[1] if len(sys.argv) > 1 else "Body"
+page = sys.argv[2] if len(sys.argv) > 2 else 1
+count = sys.argv[3] if len(sys.argv) > 3 else 1000
+
+# Usage: `python ewg.py Body 1 1000` {Category Page Count}
 print("load page with options: ", category, " " , page)
 
 # Connect to db
@@ -40,7 +43,7 @@ curr = conn.cursor()
 
 while 1:
   # driver.get(url=f"https://www.ewg.org/skindeep/browse/category/Blush/?category=Blush&sort=score&per_page=9000")
-  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?page={page}&per_page=1") 
+  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?page={page}&per_page={count}") 
 
   time.sleep(1)
   # section = driver.find_element(By.XPATH, "//section[contains(@class, 'product_listings')]")
@@ -61,6 +64,7 @@ while 1:
       hazard = data2.find_element(By.XPATH, ".//div[contains(@class, 'product-score')]/div/div[contains(@class, 'hazard-level')]").text
 
     insertValues.append([
+      id,
       category, 
       data1.find_element(By.XPATH, ".//div[contains(@class, 'product-company')]").text,
       data1.find_element(By.XPATH, ".//div[contains(@class, 'product-name')]").text,
@@ -72,7 +76,7 @@ while 1:
   #insertValues.append(
   # insertSQL = "INSERT INTO products(category, company, product, image, details, score) VALUES('Blush', '%s', '%s', '%s', '%s', '%s')"
 
-  curr.executemany("INSERT INTO products(category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s)", insertValues)
+  curr.executemany("INSERT INTO products(id, category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s)", insertValues)
   conn.commit()
   print("Inserted rows for page: ", page)
   page = int(page) + 1
