@@ -11,8 +11,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 import psycopg2
 from config import load_config
-# options = uc.ChromeOptions()
-driver = uc.Chrome(headless=True,use_subprocess=True)
+options = uc.ChromeOptions()
+options.add_argument('--blink-settings=imagesEnabled=false')
+driver = uc.Chrome(headless=True,use_subprocess=True, options=options)
 
 # Database setup
 def connect(config):
@@ -35,34 +36,49 @@ page = sys.argv[2] if len(sys.argv) > 2 else 1
 count = sys.argv[3] if len(sys.argv) > 3 else 1000
 
 # Usage: `python ewg.py Body 1 1000` {Category Page Count}
-print("load page with options: ", category, " " , page)
+print("load page with options. Category: ", category, " Page: " , page, " Count: ", count)
 
 # Connect to db
 conn = connect(config)
 curr = conn.cursor()
 
 while 1:
-  # driver.get(url=f"https://www.ewg.org/skindeep/browse/category/Blush/?category=Blush&sort=score&per_page=9000")
   driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?page={page}&per_page={count}") 
 
-  time.sleep(1)
-  # section = driver.find_element(By.XPATH, "//section[contains(@class, 'product_listings')]")
-  items = driver.find_element(By.XPATH, "//section[contains(@class, 'product-listings')]")
+  time.sleep(10)
+  start = driver.find_element(By.XPATH, "//section[contains(@class, 'product-listings')]")
+  items = start.find_elements(By.XPATH, ".//div[contains(@class, 'product-tile')]")
+
+  if items is None or items.count == 0 or  len(items) < 1:
+    break
 
   insertValues = []
-  for item in items.find_elements(By.XPATH, ".//div[contains(@class, 'product-tile')]"):
+  for item in items:
     #print("inside:", item)
     a0 = item.find_elements(By.XPATH, ".//a")[0]
     a = item.find_elements(By.XPATH, ".//a")[1]
     data1 = a.find_element(By.XPATH, ".//div[contains(@class, 'text-wrapper')]")
     data2 = a.find_element(By.XPATH, ".//div[contains(@class, 'product-data-availability')]")
-    id = re.search(r"^https:\/\/www.ewg.org\/skindeep/products\/([0-9]+)", a.get_attribute("href"))
-
+    find = re.search(r"^https:\/\/www.ewg.org\/skindeep/products\/([0-9]+)", a.get_attribute("href"))
+    
+    try:
+      find = re.search(r"^https:\/\/www.ewg.org\/skindeep/products\/([0-9]+)", a.get_attribute("href"))
+      id = find.group(1)
+    except:
+      # Alternative URL
+      # https://www.ewg.org/sunscreen/about-the-sunscreens/1074787/ATTITUDE_Sunly_Lip_Balm_Coconut_SPF_15
+      find = re.search(r"^https:\/\/www.ewg.org\/[a-zA-Z\-\_]+/[a-zA-Z\-\_]+\/([0-9]+)", a.get_attribute("href"))
+      if find is None or find.group is None or find.group(1) is None:
+        print('No ID available, skipping...', a.get_attribute("href"), data1.find_element(By.XPATH, ".//div[contains(@class, 'product-company')]").text), 
+        continue
+      id = find.group(1)
+      
     try: 
       hazard = data2.find_element(By.XPATH, ".//div[contains(@class, 'product-score')]/div[contains(@class, 'verified-text')]").text
     except: 
       hazard = data2.find_element(By.XPATH, ".//div[contains(@class, 'product-score')]/div/div[contains(@class, 'hazard-level')]").text
 
+    # Values are repeated for use of ON CONFLICT condition. First set is 7 values, Second is 6.
     insertValues.append([
       id,
       category, 
@@ -70,13 +86,16 @@ while 1:
       data1.find_element(By.XPATH, ".//div[contains(@class, 'product-name')]").text,
       a0.find_element(By.XPATH, ".//img").get_attribute("src"),
       a.get_attribute("href"), 
-      hazard
+      hazard,
+      category, 
+      data1.find_element(By.XPATH, ".//div[contains(@class, 'product-company')]").text,
+      data1.find_element(By.XPATH, ".//div[contains(@class, 'product-name')]").text,
+      a0.find_element(By.XPATH, ".//img").get_attribute("src"),
+      a.get_attribute("href"), 
+      hazard,
     ])
 
-  #insertValues.append(
-  # insertSQL = "INSERT INTO products(category, company, product, image, details, score) VALUES('Blush', '%s', '%s', '%s', '%s', '%s')"
-
-  curr.executemany("INSERT INTO products(id, category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s)", insertValues)
+  curr.executemany("INSERT INTO products(id, category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (id) DO UPDATE SET (category, company, product, image, details, score) = (%s, %s, %s, %s, %s, %s)", insertValues)
   conn.commit()
   print("Inserted rows for page: ", page)
   page = int(page) + 1
