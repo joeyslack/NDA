@@ -43,9 +43,9 @@ conn = connect(config)
 curr = conn.cursor()
 
 while 1:
-  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?page={page}&per_page={count}") 
+  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?category={category}&page={page}&per_page={count}&sort=reverse-score") 
 
-  time.sleep(10)
+  time.sleep(5)
   start = driver.find_element(By.XPATH, "//section[contains(@class, 'product-listings')]")
   items = start.find_elements(By.XPATH, ".//div[contains(@class, 'product-tile')]")
 
@@ -94,7 +94,8 @@ while 1:
       a.get_attribute("href"), 
       hazard,
     ])
-
+    
+  # curr.executemany("INSERT INTO products(id, category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s, %s)", insertValues)
   curr.executemany("INSERT INTO products(id, category, company, product, image, details, score) VALUES(%s, %s, %s, %s, %s, %s, %s) ON CONFLICT (id) DO UPDATE SET (category, company, product, image, details, score) = (%s, %s, %s, %s, %s, %s)", insertValues)
   conn.commit()
   print("Inserted rows for page: ", page)
