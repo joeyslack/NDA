@@ -13,7 +13,7 @@ import psycopg2
 from config import load_config
 options = uc.ChromeOptions()
 options.add_argument('--blink-settings=imagesEnabled=false')
-driver = uc.Chrome(headless=True,use_subprocess=True, options=options)
+driver = uc.Chrome(headless=False,use_subprocess=True, options=options)
 
 # Database setup
 def connect(config):
@@ -42,10 +42,27 @@ print("load page with options. Category: ", category, " Page: " , page, " Count:
 conn = connect(config)
 curr = conn.cursor()
 
-while 1:
-  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?category={category}&page={page}&per_page={count}&sort=reverse-score") 
+# Face
+# Body
+# Makeup_Face
+# Makeup_Lips
+# Makeup_Eyes
+# Makeup_Other
+# Shampoo_&_Conditioner
+# Styling
+# Hair_Products_for_People_of_Color
+# Babies
+# Oral_Care
+# Fragrance
+# Nails
+# Men
+# Sun_Care
 
-  time.sleep(5)
+
+while 1:
+  driver.get(url=f"https://www.ewg.org/skindeep/browse/category/{category}/?page={page}&per_page={count}&sort=reverse-score") 
+
+  time.sleep(1)
   start = driver.find_element(By.XPATH, "//section[contains(@class, 'product-listings')]")
   items = start.find_elements(By.XPATH, ".//div[contains(@class, 'product-tile')]")
 
