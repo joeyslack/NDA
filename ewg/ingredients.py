@@ -1,4 +1,5 @@
 # Scraping for Paula.csv skincare stuff
+from pathlib import Path
 import time
 import re
 import random
@@ -15,6 +16,10 @@ from config import load_config
 
 options = uc.ChromeOptions()
 options.add_argument("--blink-settings=imagesEnabled=false")
+options.add_argument(
+    f"--load-extension={Path(__file__).parent}/extensions/CJPALHDLNBPAFIAMEJDNHCPHJBKEIAGM_1_57_0_0/"
+)
+
 driver = uc.Chrome(headless=False, use_subprocess=True, options=options)
 
 
