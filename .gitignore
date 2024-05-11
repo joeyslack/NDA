@@ -7,3 +7,7 @@ venv/*
 .envvenv
 .env
 **/*.ini
+
+
+data_bak/*
+data_bak
