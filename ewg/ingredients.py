@@ -182,22 +182,28 @@ for row in rows:
                 ingredient_href,
                 score,
                 product_id,
-                name,
-                names,
-                functions,
-                concerns,
-                data_availability,
-                ingredient_href,
-                score,
+                # name,
+                # names,
+                # functions,
+                # concerns,
+                # data_availability,
+                # ingredient_href,
+                # score,
                 row[0],
             ]
         )
 
 if len(insertValues) > 0:
+    # curr.executemany(
+    #     "INSERT INTO ingredients(id, name, names, functions, concerns, data_availability, ingredient_href, score, product_id) \
+    # 	VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s) \
+    # 	ON CONFLICT (id) DO UPDATE SET (name, names, functions, concerns, data_availability, ingredient_href, score, product_id) = (%s, %s, %s, %s, %s, %s, %s, ingredients.product_id || %s)",
+    #     insertValues,
+    # )
     curr.executemany(
         "INSERT INTO ingredients(id, name, names, functions, concerns, data_availability, ingredient_href, score, product_id) \
 		VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s) \
-		ON CONFLICT (id) DO UPDATE SET (name, names, functions, concerns, data_availability, ingredient_href, score, product_id) = (%s, %s, %s, %s, %s, %s, %s, ingredients.product_id || %s)",
+		ON CONFLICT (id) DO UPDATE SET product_id = ingredients.product_id || %s",
         insertValues,
     )
     conn.commit()
